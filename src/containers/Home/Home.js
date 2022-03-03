@@ -118,7 +118,7 @@ export default function Home() {
       />
       {isLoading ? (
         <div className="loader-wrapper">
-          <Rings ariaLabel="loading-indicator" className="list-ring" />
+          <Rings ariaLabel="loading-indicator" />
         </div>
       ) : (
         <Listing
