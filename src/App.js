@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Navbar from "./components/Navbar/Navbar";
+import Home from "./containers/Home/Home";
+import {toast} from "react-toastify";
 
 toast.configure();
-function App(){
 
+function App() {
 
     return (
         <div>
-        <Navbar />
+            <Home/>
         </div>
     );
 }
