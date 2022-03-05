@@ -1,4 +1,4 @@
-import "./Navbar.scss";
+import "./Search.scss";
 import Dropdown from "../Dropdown/Dropdown";
 import SearchInput from "../SearchInput/SearchInput";
 import Button from "../Button/Button";

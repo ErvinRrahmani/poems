@@ -7,15 +7,16 @@ export default function Dropdown({
   return (
     <select
       className="form-select"
+      defaultValue={name}
       onChange={(event) => {
         onChangeState(event.target.value);
         setIsLoading(true);
       }}
       aria-label="Default select example"
     >
-      <option selected>{name}</option>
-      {poemsData?.map((poemsData) => {
-        return <option value={poemsData}>{poemsData.slice(0, 30)}</option>;
+      <option value={name} disabled>{name}</option>
+      {poemsData?.map((poemsData, i) => {
+        return <option value={poemsData} key={i}>{poemsData.slice(0, 30)}</option>;
       })}
     </select>
   );
