@@ -22,6 +22,7 @@ export default function Search({
   isOpen2,
   setIsOpen2,
   setFavouritePoems,
+  poems,
 }) {
   return (
     <>
@@ -41,7 +42,11 @@ export default function Search({
               setIsLoading={setIsLoading}
               onChangeState={onTitleChangeDebounce}
             />
-            <SearchInput searchFunction={generalSearcher} />
+            {poems?.length > 0 ? (
+              <SearchInput searchFunction={generalSearcher} />
+            ) : (
+              ""
+            )}
             <Button
               name="Fetch 20 poems"
               buttonClassName="btn btn-outline-primary"

@@ -87,6 +87,7 @@ export default function Home() {
 
   const searcher = (text) => {
     let searchText = text?.target.value.toLowerCase();
+
     let filteredUser = poems?.filter((poem) => {
       return (
         poem?.author.toLowerCase().includes(searchText) ||
@@ -98,8 +99,9 @@ export default function Home() {
       setValidationText("Artist or Poem not found!");
     } else {
       setValidationText("");
-      setFilteredData(filteredUser);
     }
+
+    setFilteredData(filteredUser);
   };
 
   const onArtistChangeDebounce = debounce((event) => filterByAuthor(event));
@@ -115,6 +117,7 @@ export default function Home() {
   return (
     <div className="Home">
       <Search
+        poems={poems}
         authors={authors}
         titles={titles}
         generalSearcher={generalSearcher}

@@ -95,11 +95,6 @@ export default function Listing({
                         >
                           <i className="fa fa-file-alt" />
                         </span>
-                        <Modal
-                          poemSingleData={singlePoem}
-                          open={isOpen}
-                          onClose={() => setIsOpen(false)}
-                        />
                       </div>
                       <td>
                         <span
@@ -125,6 +120,13 @@ export default function Listing({
                 </tr>
               );
             })}
+            <div className="modal-wrapper">
+              <Modal
+                poemSingleData={singlePoem}
+                open={isOpen}
+                onClose={() => setIsOpen(false)}
+              />
+            </div>
             <h5>{validationText}</h5>
           </tbody>
         </table>
