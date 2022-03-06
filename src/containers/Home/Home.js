@@ -94,12 +94,11 @@ export default function Home() {
       );
     });
 
-    setFilteredData(filteredUser);
-
     if (filteredUser.length === 0) {
       setValidationText("Artist or Poem not found!");
     } else {
       setValidationText("");
+      setFilteredData(filteredUser);
     }
   };
 
