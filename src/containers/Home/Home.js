@@ -8,7 +8,7 @@ import "./Home.scss";
 
 export default function Home() {
   const [poems, setPoems] = useState([]);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [authors, setAuthors] = useState([]);
   const [titles, setTitles] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,6 @@ export default function Home() {
   const [filteredData, setFilteredData] = useState([]);
   const favoruitePOemsContext = createContext(favouritePoems);
   const [validationText, setValidationText] = useState("");
-
 
   const getAuthors = async () => {
     try {
@@ -103,6 +102,10 @@ export default function Home() {
     setFilteredData(filteredUser);
   };
 
+  const buttonOnClick = () => {
+    setIsLoading(!isLoading);
+  };
+
   const onArtistChangeDebounce = debounce((event) => filterByAuthor(event));
   const onTitleChangeDebounce = debounce((event) => filterByTitle(event));
   const onFetch20RandomPoems = debounce((event) => fetch20Poems(event));
@@ -119,6 +122,7 @@ export default function Home() {
         poems={poems}
         authors={authors}
         titles={titles}
+        buttonOnClick={buttonOnClick}
         generalSearcher={generalSearcher}
         setIsLoading={setIsLoading}
         favoruitePoemsContext={favoruitePOemsContext}
