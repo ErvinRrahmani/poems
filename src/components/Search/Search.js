@@ -2,7 +2,7 @@ import "./Search.scss";
 import Dropdown from "../Dropdown/Dropdown";
 import SearchInput from "../SearchInput/SearchInput";
 import Button from "../Button/Button";
-import NavbarBrand from "../NavbarBrand/NavbarBrand";
+import Brand from "../Brand/Brand";
 import Modal from "../Modal/Modal";
 
 const BUTTON_WRAPPER_STYLES = {
@@ -27,7 +27,7 @@ export default function Search({
     <>
       <nav className="Search navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <NavbarBrand brandName="Poems" />
+          <Brand brandName="Poems" />
           <form className="element-wrapper">
             <Dropdown
               name="Sort By Author"

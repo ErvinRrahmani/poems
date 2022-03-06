@@ -29,11 +29,11 @@ export default function Listing({
           poemsInsideArray,
         ]);
         toast.success(
-          `${poems?.title} by ${poems?.author} Has been added to favorites!`
+          `${poems?.title} by ${poems?.author} Has been added to favourites!`
         );
       } else {
         toast.error(
-          `${poems?.title} by ${poems?.author} already exits to favorites!`
+          `${poems?.title} by ${poems?.author} already exits on favourite list!`
         );
       }
     });
