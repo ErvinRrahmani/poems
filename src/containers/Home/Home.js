@@ -3,7 +3,7 @@ import Listing from "../../components/Listing/Listing";
 import { useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import { Rings } from "react-loader-spinner";
-import { createContext } from 'react';
+import { createContext } from "react";
 import "./Home.scss";
 
 export default function Home() {
@@ -18,9 +18,7 @@ export default function Home() {
   const [filteredData, setFilteredData] = useState([]);
   const favoruitePOemsContext = createContext(favouritePoems);
 
-
-
-  console.log('context  ',favoruitePOemsContext)
+  console.log("context  ", favoruitePOemsContext);
 
   const getAuthors = async () => {
     try {
@@ -119,8 +117,8 @@ export default function Home() {
         onFetch20RandomPoems={onFetch20RandomPoems}
         onArtistChangeDebounce={onArtistChangeDebounce}
         onTitleChangeDebounce={onTitleChangeDebounce}
-        setIsOpen2={setIsOpen2}
         isOpen2={isOpen2}
+        setIsOpen2={setIsOpen2}
         setFavouritePoems={setFavouritePoems}
       />
       {isLoading ? (
@@ -129,8 +127,6 @@ export default function Home() {
         </div>
       ) : (
         <Listing
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
           poems={filteredData}
           isOpen={isOpen}
           setIsOpen={setIsOpen}

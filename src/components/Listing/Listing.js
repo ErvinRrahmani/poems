@@ -17,6 +17,7 @@ export default function Listing({
   setSinglePoem,
   isFavourite,
 }) {
+
   const addToFavorites = (poems) => {
     let favPoemsArray = [];
     favPoemsArray.push(poems);
@@ -29,6 +30,10 @@ export default function Listing({
         ]);
         toast.success(
           `${poems?.title} by ${poems?.author} Has been added to favorites!`
+        );
+      } else {
+        toast.error(
+          `${poems?.title} by ${poems?.author} already exits to favorites!`
         );
       }
     });

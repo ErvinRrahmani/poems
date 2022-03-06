@@ -3,14 +3,14 @@ import Dropdown from "../Dropdown/Dropdown";
 import SearchInput from "../SearchInput/SearchInput";
 import Button from "../Button/Button";
 import NavbarBrand from "../NavbarBrand/NavbarBrand";
-import FavouriteModal from "../FavouriteModal/FavouriteModal";
+import Modal from "../Modal/Modal";
 
 const BUTTON_WRAPPER_STYLES = {
   position: "relative",
   zIndex: 1,
 };
 
-export default function Navbar({
+export default function Search({
   authors,
   titles,
   generalSearcher,
@@ -25,7 +25,7 @@ export default function Navbar({
 }) {
   return (
     <>
-      <nav className="Navbar navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="Search navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <NavbarBrand brandName="Poems" />
           <form className="element-wrapper">
@@ -62,7 +62,7 @@ export default function Navbar({
                 >
                   Open Modal
                 </Button>
-                <FavouriteModal
+                <Modal
                   favPoems={favouritePoems}
                   open={isOpen2}
                   isFavourite={true}

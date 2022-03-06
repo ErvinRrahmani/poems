@@ -1,5 +1,7 @@
 import ReactDom from "react-dom";
 import "./Modal.scss";
+import "../Listing/Listing";
+import Listing from "../Listing/Listing";
 
 const MODAL_STYLES = {
   position: "fixed",
@@ -24,27 +26,64 @@ const OVERLAY_STYLES = {
   zIndex: 1000,
 };
 
-export default function Modal({ open, onClose, poemSingleData }) {
+export default function Modal({
+  open,
+  isOpen,
+  isFavourite,
+  poemSingleData,
+  setIsOpen,
+  onClose,
+  favouritePoems,
+  setFavouritePoems,
+}) {
   if (!open) return null;
 
-  return ReactDom.createPortal(
-    <>
-      <div className="Modal">
-        <div style={OVERLAY_STYLES} />
-        <div style={MODAL_STYLES}>
-          <div className="button-wrapper">
-            <button className="button-close-modal" onClick={onClose}>
-              X
-            </button>
-          </div>
-          <div className="wrapper">
-            <h4>{poemSingleData?.title}</h4>
-            <h5>{poemSingleData?.author}</h5>
-            <p>{poemSingleData?.lines}</p>
+  if (!isFavourite) {
+    return ReactDom.createPortal(
+      <>
+        <div className="Modal">
+          <div style={OVERLAY_STYLES} />
+          <div style={MODAL_STYLES}>
+            <div className="button-wrapper">
+              <button className="button-close-modal" onClick={onClose}>
+                X
+              </button>
+            </div>
+            <div className="wrapper">
+              <h4>{poemSingleData?.title}</h4>
+              <h5>{poemSingleData?.author}</h5>
+              <p>{poemSingleData?.lines}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </>,
-    document.getElementById("portal")
-  );
+      </>,
+      document.getElementById("portal")
+    );
+  } else {
+    return ReactDom.createPortal(
+      <>
+        <div className="Modal">
+          <div style={OVERLAY_STYLES} />
+          <div style={MODAL_STYLES}>
+            <div className="button-wrapper">
+              <button className="button-close-modal" onClick={onClose}>
+                X
+              </button>
+            </div>
+            <div className="wrapper">
+              <Listing
+                favouritePoems={favouritePoems}
+                poems={favouritePoems}
+                open={isOpen}
+                setIsOpen={setIsOpen}
+                setFavouritePoems={setFavouritePoems}
+                isFavourite={true}
+              />
+            </div>
+          </div>
+        </div>
+      </>,
+      document.getElementById("portal")
+    );
+  }
 }
