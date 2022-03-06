@@ -1,8 +1,9 @@
-import Navbar from "../../components/Navbar/Navbar";
+import Search from "../../components/Search/Search";
 import Listing from "../../components/Listing/Listing";
 import { useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import { Rings } from "react-loader-spinner";
+import { createContext } from 'react';
 import "./Home.scss";
 
 export default function Home() {
@@ -15,6 +16,11 @@ export default function Home() {
   const [favouritePoems, setFavouritePoems] = useState([]);
   const [isOpen2, setIsOpen2] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
+  const favoruitePOemsContext = createContext(favouritePoems);
+
+
+
+  console.log('context  ',favoruitePOemsContext)
 
   const getAuthors = async () => {
     try {
@@ -103,11 +109,12 @@ export default function Home() {
 
   return (
     <div className="Home">
-      <Navbar
+      <Search
         authors={authors}
         titles={titles}
         generalSearcher={generalSearcher}
         setIsLoading={setIsLoading}
+        favoruitePoemsContext={favoruitePOemsContext}
         favouritePoems={favouritePoems}
         onFetch20RandomPoems={onFetch20RandomPoems}
         onArtistChangeDebounce={onArtistChangeDebounce}

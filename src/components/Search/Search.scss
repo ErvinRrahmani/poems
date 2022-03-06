@@ -1,0 +1,15 @@
+.Search {
+  .element-wrapper {
+    justify-content: space-around;
+    display: flex;
+    width: 100%;
+
+    select {
+      width: 20%;
+    }
+
+    input {
+      width: 20%;
+    }
+  }
+}
