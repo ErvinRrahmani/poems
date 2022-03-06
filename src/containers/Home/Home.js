@@ -17,6 +17,7 @@ export default function Home() {
   const [isOpen2, setIsOpen2] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
   const favoruitePOemsContext = createContext(favouritePoems);
+  const [validationText, setValidationText] = useState("");
 
   console.log("context  ", favoruitePOemsContext);
 
@@ -92,7 +93,14 @@ export default function Home() {
         poem?.title.toLowerCase()?.includes(searchText)
       );
     });
+
     setFilteredData(filteredUser);
+
+    if (filteredUser.length === 0) {
+      setValidationText("Artist or Poem not found!");
+    } else {
+      setValidationText("");
+    }
   };
 
   const onArtistChangeDebounce = debounce((event) => filterByAuthor(event));
@@ -129,6 +137,7 @@ export default function Home() {
         <Listing
           poems={filteredData}
           isOpen={isOpen}
+          validationText={validationText}
           setIsOpen={setIsOpen}
           singlePoem={singlePoem}
           favouritePoems={favouritePoems}

@@ -16,8 +16,8 @@ export default function Listing({
   singlePoem,
   setSinglePoem,
   isFavourite,
+  validationText,
 }) {
-
   const addToFavorites = (poems) => {
     let favPoemsArray = [];
     favPoemsArray.push(poems);
@@ -125,6 +125,7 @@ export default function Listing({
                 </tr>
               );
             })}
+            <h5>{validationText}</h5>
           </tbody>
         </table>
       </div>
