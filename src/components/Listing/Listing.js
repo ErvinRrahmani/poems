@@ -85,9 +85,10 @@ export default function Listing({
                   <td>{poem?.lines?.slice(0, 5)} -...</td>
                   {!isFavourite ? (
                     <>
-                      <div style={BUTTON_WRAPPER_STYLES}>
+                      <td>
                         <span
-                          className="modal-open-button"
+                          className="table-clickable-pointer"
+                          style={BUTTON_WRAPPER_STYLES}
                           onClick={() => {
                             setIsOpen(true);
                             setSinglePoem(poem);
@@ -95,13 +96,13 @@ export default function Listing({
                         >
                           <i className="fa fa-file-alt" />
                         </span>
-                      </div>
+                      </td>
                       <td>
                         <span
+                          className="table-clickable-pointer"
                           onClick={() => {
                             addToFavorites(poem);
                           }}
-                          className="modal-open-button"
                         >
                           <i className="fas fa-heart" />
                         </span>
@@ -110,8 +111,8 @@ export default function Listing({
                   ) : (
                     <td>
                       <span
+                        className="table-clickable-pointer"
                         onClick={() => deletePoems(poem)}
-                        className="modal-open-button"
                       >
                         <i className="fas fa-trash-alt" />
                       </span>
@@ -120,16 +121,16 @@ export default function Listing({
                 </tr>
               );
             })}
-            <div className="modal-wrapper">
-              <Modal
-                poemSingleData={singlePoem}
-                open={isOpen}
-                onClose={() => setIsOpen(false)}
-              />
-            </div>
-            <h5>{validationText}</h5>
           </tbody>
         </table>
+        <div className="modal-wrapper">
+          <Modal
+            poemSingleData={singlePoem}
+            open={isOpen}
+            onClose={() => setIsOpen(false)}
+          />
+        </div>
+        <h5>{validationText}</h5>
       </div>
     </>
   );

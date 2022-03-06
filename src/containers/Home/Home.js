@@ -19,7 +19,6 @@ export default function Home() {
   const favoruitePOemsContext = createContext(favouritePoems);
   const [validationText, setValidationText] = useState("");
 
-  console.log("context  ", favoruitePOemsContext);
 
   const getAuthors = async () => {
     try {
