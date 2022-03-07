@@ -23,6 +23,7 @@ export default function Search({
   setIsOpen2,
   setFavouritePoems,
   poems,
+  deletePoems,
 }) {
   return (
     <>
@@ -68,7 +69,7 @@ export default function Search({
                   Open Modal
                 </Button>
                 <Modal
-                  favPoems={favouritePoems}
+                  deletePoems={deletePoems}
                   open={isOpen2}
                   isFavourite={true}
                   setIsOpen={setIsOpen2}

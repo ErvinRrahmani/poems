@@ -9,45 +9,16 @@ const BUTTON_WRAPPER_STYLES = {
 
 export default function Listing({
   poems,
-  favouritePoems,
-  setFavouritePoems,
   isOpen,
   setIsOpen,
   singlePoem,
   setSinglePoem,
   isFavourite,
   validationText,
+  deletePoems,
+  addToFavorites  
 }) {
-  const addToFavorites = (poems) => {
-    let favPoemsArray = [];
-    favPoemsArray.push(poems);
-
-    favPoemsArray?.forEach((poemsInsideArray) => {
-      if (favouritePoems.includes(poemsInsideArray) === false) {
-        setFavouritePoems((favouritePoems) => [
-          ...favouritePoems,
-          poemsInsideArray,
-        ]);
-        toast.success(
-          `${poems?.title} by ${poems?.author} Has been added to favourites!`
-        );
-      } else {
-        toast.error(
-          `${poems?.title} by ${poems?.author} already exits on favourite list!`
-        );
-      }
-    });
-  };
-
-  const deletePoems = (deletedPoems) => {
-    setFavouritePoems(favouritePoems.filter((item) => item !== deletedPoems));
-    toast.error(
-      `${deletedPoems?.title} by ${deletedPoems?.author} Has been removed from favorites!`
-    );
-    if (favouritePoems?.length === 1) {
-      setIsOpen(false);
-    }
-  };
+  
 
   return (
     <>

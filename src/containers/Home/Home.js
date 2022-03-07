@@ -5,7 +5,7 @@ import axios from "../../utils/axios";
 import { Rings } from "react-loader-spinner";
 import { createContext } from "react";
 import "./Home.scss";
-
+import { toast } from "react-toastify";
 export default function Home() {
   const [poems, setPoems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -106,6 +106,37 @@ export default function Home() {
     setIsLoading(!isLoading);
   };
 
+  const addToFavorites = (poems) => {
+    let favPoemsArray = [];
+    favPoemsArray.push(poems);
+
+    favPoemsArray?.forEach((poemsInsideArray) => {
+      if (favouritePoems.includes(poemsInsideArray) === false) {
+        setFavouritePoems((favouritePoems) => [
+          ...favouritePoems,
+          poemsInsideArray,
+        ]);
+        toast.success(
+          `${poems?.title} by ${poems?.author} Has been added to favourites!`
+        );
+      } else {
+        toast.error(
+          `${poems?.title} by ${poems?.author} already exits on favourite list!`
+        );
+      }
+    });
+  };
+
+  const deletePoems = (deletedPoems) => {
+    setFavouritePoems(favouritePoems.filter((item) => item !== deletedPoems));
+    toast.error(
+      `${deletedPoems?.title} by ${deletedPoems?.author} Has been removed from favorites!`
+    );
+    if (favouritePoems?.length === 1) {
+      setIsOpen2(false);
+    }
+  };
+
   const onArtistChangeDebounce = debounce((event) => filterByAuthor(event));
   const onTitleChangeDebounce = debounce((event) => filterByTitle(event));
   const onFetch20RandomPoems = debounce((event) => fetch20Poems(event));
@@ -122,6 +153,7 @@ export default function Home() {
         poems={poems}
         authors={authors}
         titles={titles}
+        deletePoems={deletePoems}
         buttonOnClick={buttonOnClick}
         generalSearcher={generalSearcher}
         setIsLoading={setIsLoading}
@@ -140,6 +172,8 @@ export default function Home() {
         </div>
       ) : (
         <Listing
+          addToFavorites={addToFavorites}
+          isFavourite={false}
           poems={filteredData}
           isOpen={isOpen}
           validationText={validationText}

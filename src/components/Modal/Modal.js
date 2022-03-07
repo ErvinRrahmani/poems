@@ -35,6 +35,7 @@ export default function Modal({
   onClose,
   favouritePoems,
   setFavouritePoems,
+  deletePoems
 }) {
   if (!open) return null;
 
@@ -72,9 +73,10 @@ export default function Modal({
             </div>
             <div className="wrapper">
               <Listing
+              deletePoems={deletePoems}
                 favouritePoems={favouritePoems}
                 poems={favouritePoems}
-                open={isOpen}
+                isOpen={isOpen}
                 setIsOpen={setIsOpen}
                 setFavouritePoems={setFavouritePoems}
                 isFavourite={true}
