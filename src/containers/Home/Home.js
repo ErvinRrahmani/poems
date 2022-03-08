@@ -138,7 +138,7 @@ export default function Home() {
           );
         }
         else {
-          toast.error("Poemat nuk jane te njejta, ju lutem shkoni te fav lista dhe hiqeni")
+          toast.error("Poems are not the same")
         }
       }) 
     if (favouritePoems?.length === 1) {
