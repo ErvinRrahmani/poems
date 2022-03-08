@@ -46,11 +46,12 @@ export default function Listing({
           <tbody>
             {poems?.map((poem, i) => {
               return (
-                <tr key={poem.lines.toString().length}>
-                  {!isFavourite ? <th scope="row">{i + 1}</th> : ""}
-                  <td>{poem?.title}</td>
-                  <td>{poem?.author}</td>
-                  <td>{poem?.lines?.slice(0, 5)} -...</td>
+                <tr key={i}>
+                  {!isFavourite ? 
+                  <th scope="row">{i + 1}</th> : null}
+                  <td>{poem?.title.trim()}</td>
+                  <td>{poem?.author.trim()}</td>
+                  <td>{poem?.lines?.slice(0, 5)}-...</td>
                   {!isFavourite ? (
                     <>
                       <td>

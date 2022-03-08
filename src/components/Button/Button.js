@@ -12,6 +12,7 @@ export default function Button({
       className={buttonClassName}
       type={type}
       onClick={(event) => {
+        event.preventDefault();
         onClickFunction(event);
         setIsLoading(true);
       }}

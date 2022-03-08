@@ -61,6 +61,7 @@ export default function Search({
                   type="button"
                   buttonClassName="btn btn-outline-success"
                   name="Favourite Poems"
+                  setIsLoading={setIsLoading}
                   onClickFunction={(event) => {
                     event.preventDefault();
                     setIsOpen2(true);

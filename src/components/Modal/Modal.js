@@ -66,7 +66,7 @@ export default function Modal({
                   }}
                 >
                   Delete Poem &nbsp;
-                  <i class="far fa-trash-alt"></i>
+                  <i className="far fa-trash-alt"></i>
                 </button>
               ) : (
                 <button
