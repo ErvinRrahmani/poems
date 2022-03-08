@@ -3,7 +3,6 @@ import Listing from "../../components/Listing/Listing";
 import { useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import { Rings } from "react-loader-spinner";
-import { createContext } from "react";
 import "./Home.scss";
 import { toast } from "react-toastify";
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
   const [favouritePoems, setFavouritePoems] = useState([]);
   const [isOpen2, setIsOpen2] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
-  const favoruitePOemsContext = createContext(favouritePoems);
   const [validationText, setValidationText] = useState("");
 
   const getAuthors = async () => {
@@ -98,13 +96,9 @@ export default function Home() {
     } else {
       setValidationText("");
     }
-
     setFilteredData(filteredUser);
   };
 
-  const buttonOnClick = () => {
-    setIsLoading(!isLoading);
-  };
   const addToFavorites = (poems) => {
     let favPoemsArray = [];
     favPoemsArray.push(poems);
@@ -169,10 +163,8 @@ export default function Home() {
         authors={authors}
         titles={titles}
         deletePoems={deletePoems}
-        buttonOnClick={buttonOnClick}
         generalSearcher={generalSearcher}
         setIsLoading={setIsLoading}
-        favoruitePoemsContext={favoruitePOemsContext}
         favouritePoems={favouritePoems}
         onFetch20RandomPoems={onFetch20RandomPoems}
         onArtistChangeDebounce={onArtistChangeDebounce}
