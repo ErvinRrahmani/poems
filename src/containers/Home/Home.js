@@ -105,7 +105,6 @@ export default function Home() {
   const buttonOnClick = () => {
     setIsLoading(!isLoading);
   };
-
   const addToFavorites = (poems) => {
     let favPoemsArray = [];
     favPoemsArray.push(poems);
@@ -128,10 +127,26 @@ export default function Home() {
   };
 
   const deletePoems = (deletedPoems) => {
-    setFavouritePoems(favouritePoems.filter((item) => item !== deletedPoems));
-    toast.error(
-      `${deletedPoems?.title} by ${deletedPoems?.author} Has been removed from favorites!`
-    );
+      let tempArray = []
+      
+      tempArray.push(deletedPoems)
+
+      tempArray?.forEach((item) => {
+        if(favouritePoems?.length === 0) {
+          toast.error('The favourite list empty, please add!')
+          return
+        }
+        else if(favouritePoems?.includes(item) === true) {
+          setFavouritePoems(
+            favouritePoems.filter((item) => item ? item === deletePoems : toast.info("SKA GJO")))
+          toast.error(
+            `${deletedPoems?.title} by ${deletedPoems?.author} Has been removed from favorites!`
+          );
+        }
+        else {
+          toast.error("Poemat nuk jane te njejta, ju lutem shkoni te fav lista dhe hiqeni")
+        }
+      }) 
     if (favouritePoems?.length === 1) {
       setIsOpen2(false);
     }
@@ -145,7 +160,7 @@ export default function Home() {
   useEffect(() => {
     getAuthors();
     getPoemsTitle();
-  }, []);
+  }, [favouritePoems]);
 
   return (
     <div className="Home">
@@ -174,12 +189,13 @@ export default function Home() {
         <Listing
           addToFavorites={addToFavorites}
           isFavourite={false}
+          deletePoems={deletePoems}
           poems={filteredData}
           isOpen={isOpen}
           validationText={validationText}
           setIsOpen={setIsOpen}
           singlePoem={singlePoem}
-          favouritePoems={favouritePoems}
+            favouritePoems={favouritePoems}  
           setFavouritePoems={setFavouritePoems}
           setSinglePoem={setSinglePoem}
         />

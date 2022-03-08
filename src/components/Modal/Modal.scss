@@ -4,12 +4,42 @@
     justify-content: flex-end;
     align-items: center;
 
-    button.button-close-modal {
-      border: none;
-      width: 30px;
-      height: 30px;
-      border-radius: 100%;
-      background: grey;
+    .button-wrapper {
+      cursor: pointer;
+      background-color: inherit;
+      border: 1px solid grey;
+      border-radius: 10px;
+    }
+  }
+
+  button.button-close-modal {
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background: grey;
+  }
+}
+
+.close-add-buttons-wrapper {
+  text-align: end;
+  .button-wrapper-add {
+    margin: 5px 0 0 5px;
+    background-color: inherit;
+    border-radius: 5px;
+    border: 1px solid grey;
+    &:hover {
+      background-color: lightblue;
+    }
+  }
+  .button-wrapper-delete {
+    margin: 5px 0 0 5px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    border: 1px solid grey;
+    &:hover {
+      background-color: lightcoral;
     }
   }
 }

@@ -33,9 +33,11 @@ export default function Modal({
   poemSingleData,
   setIsOpen,
   onClose,
+  addToFavorites,
   favouritePoems,
   setFavouritePoems,
-  deletePoems
+  deletePoems,
+  buttonStatus,
 }) {
   if (!open) return null;
 
@@ -55,6 +57,28 @@ export default function Modal({
               <h5>{poemSingleData?.author}</h5>
               <p>{poemSingleData?.lines}</p>
             </div>
+            <div className="close-add-buttons-wrapper">
+              {favouritePoems.includes(poemSingleData) ? (
+                <button
+                  className="button-wrapper-delete"
+                  onClick={() => {
+                    deletePoems(poemSingleData);
+                  }}
+                >
+                  Delete Poem &nbsp;
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              ) : (
+                <button
+                  className="button-wrapper-add"
+                  onClick={() => {
+                    addToFavorites(poemSingleData);
+                  }}
+                >
+                  Add To &nbsp;
+                  <i className="fas fa-heart" />
+                </button>)}
+            </div>
           </div>
         </div>
       </>,
@@ -73,7 +97,8 @@ export default function Modal({
             </div>
             <div className="wrapper">
               <Listing
-              deletePoems={deletePoems}
+                addToFavorites={addToFavorites}
+                deletePoems={deletePoems}
                 favouritePoems={favouritePoems}
                 poems={favouritePoems}
                 isOpen={isOpen}

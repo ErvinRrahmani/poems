@@ -1,6 +1,5 @@
 import "./Listing.scss";
 import Modal from "../Modal/Modal";
-import { toast } from "react-toastify";
 
 const BUTTON_WRAPPER_STYLES = {
   position: "relative",
@@ -16,10 +15,9 @@ export default function Listing({
   isFavourite,
   validationText,
   deletePoems,
-  addToFavorites  
+  addToFavorites,
+  favouritePoems
 }) {
-  
-
   return (
     <>
       <div className="Listing">
@@ -34,7 +32,6 @@ export default function Listing({
                   <th scope="col">Author</th>
                   <th scope="col-2">Poems</th>
                   <th scope="col">Poem Details</th>
-                  <th scope="col">Favourites</th>
                 </>
               ) : (
                 <>
@@ -68,26 +65,18 @@ export default function Listing({
                           <i className="fa fa-file-alt" />
                         </span>
                       </td>
+                    </>
+                  ) : (
+                    <>
                       <td>
                         <span
                           className="table-clickable-pointer"
-                          onClick={() => {
-                            addToFavorites(poem);
-                          }}
+                          onClick={() => deletePoems(poem)}
                         >
-                          <i className="fas fa-heart" />
+                          <i className="fas fa-trash-alt" />
                         </span>
                       </td>
                     </>
-                  ) : (
-                    <td>
-                      <span
-                        className="table-clickable-pointer"
-                        onClick={() => deletePoems(poem)}
-                      >
-                        <i className="fas fa-trash-alt" />
-                      </span>
-                    </td>
                   )}
                 </tr>
               );
@@ -96,9 +85,13 @@ export default function Listing({
         </table>
         <div className="modal-wrapper">
           <Modal
+            buttonStatus={true}
+            deletePoems={deletePoems}
             poemSingleData={singlePoem}
             open={isOpen}
+            addToFavorites={addToFavorites}
             onClose={() => setIsOpen(false)}
+            favouritePoems={favouritePoems}
           />
         </div>
         <h5>{validationText}</h5>
