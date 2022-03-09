@@ -132,7 +132,7 @@ export default function Home() {
         }
         else if(favouritePoems?.includes(item) === true) {
           setFavouritePoems(
-            favouritePoems.filter((item) => item ? item === deletePoems : toast.info("SKA GJO")))
+             favouritePoems.filter((item) =>  item === deletePoems))
           toast.error(
             `${deletedPoems?.title} by ${deletedPoems?.author} Has been removed from favorites!`
           );
